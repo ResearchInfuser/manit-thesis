@@ -1,0 +1,6 @@
+# References {#sec-references .unnumbered}
+
+::: {#refs}
+:::
+
+<!-- References will be automatically generated here from the bibliography file -->

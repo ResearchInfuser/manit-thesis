@@ -1,0 +1,204 @@
+# Methodology {#sec-ch3}
+
+This chapter presents the research methodology and demonstrates how to include algorithms and mathematical formulations.
+
+## Research Framework {#sec-framework}
+
+Describe your overall research approach here. You can reference sections like @sec-model-architecture or equations like @eq-lstm-encoder.
+
+## Data Collection and Preprocessing {#sec-preprocessing}
+
+### Dataset Description
+
+Describe your datasets. Example table:
+
+| Dataset | Size | Classes | Purpose |
+|---------|-----:|:-------:|---------|
+| Training Set | 8,000 | 5 | Model training |
+| Validation Set | 1,000 | 5 | Hyperparameter tuning |
+| Test Set | 1,000 | 5 | Final evaluation |
+
+: Dataset split information {#tbl-dataset-split}
+
+### Preprocessing Steps
+
+The preprocessing pipeline consists of:
+
+1. **Tokenization**: Split text into tokens
+2. **Normalization**: Convert to lowercase, remove punctuation
+3. **Filtering**: Remove stop words and rare tokens
+4. **Encoding**: Convert tokens to numerical representations
+
+### Preprocessing Algorithm
+
+``` pseudocode
+#| label: alg-preprocessing
+\begin{algorithm}[H]
+\caption{Text Preprocessing Pipeline}
+\begin{algorithmic}[1]
+\Require Raw text corpus $D = \{d_1, d_2, \ldots, d_n\}$
+\Require Stop words list $S$, minimum frequency threshold $\tau$
+\Ensure Preprocessed corpus $D' = \{d'_1, d'_2, \ldots, d'_n\}$
+
+\State $D' \gets \emptyset$
+\State Build vocabulary $V$ from all tokens in $D$
+\State Filter $V$ to remove tokens with frequency $< \tau$
+
+\ForAll{document $d_i$ in $D$}
+    \State $tokens \gets \text{Tokenize}(d_i)$
+    \State $tokens \gets \text{LowerCase}(tokens)$
+    \State $tokens \gets \text{RemoveStopWords}(tokens, S)$
+    \State $tokens \gets \text{Lemmatize}(tokens)$
+    \State $tokens \gets \text{FilterVocabulary}(tokens, V)$
+    \State $d'_i \gets \text{Join}(tokens)$
+    \State $D' \gets D' \cup \{d'_i\}$
+\EndFor
+
+\State \Return $D'$
+\end{algorithmic}
+\end{algorithm}
+```
+
+The preprocessing algorithm (@alg-preprocessing) is applied before model training.
+
+## Model Architecture {#sec-model-architecture}
+
+### Neural Network Design
+
+The encoder transforms input sequences into hidden representations:
+
+$$
+\mathbf{h}_t = \text{LSTM}(\mathbf{x}_t, \mathbf{h}_{t-1})
+$$ {#eq-lstm-encoder}
+
+where $\mathbf{x}_t$ is the input at time $t$ and $\mathbf{h}_{t-1}$ is the previous hidden state.
+
+### Attention Mechanism
+
+The attention weights are computed as:
+
+$$
+\alpha_{t,i} = \frac{\exp(e_{t,i})}{\sum_{j=1}^{T} \exp(e_{t,j})}
+$$ {#eq-attention-weights}
+
+The context vector combines hidden states:
+
+$$
+\mathbf{c}_t = \sum_{i=1}^{T} \alpha_{t,i} \mathbf{h}_i
+$$ {#eq-context-vector}
+
+### Algorithm Example
+
+Here's how to include algorithms using pseudocode blocks:
+
+``` pseudocode
+#| label: alg-training
+\begin{algorithm}[H]
+\caption{Training Algorithm with Early Stopping}
+\begin{algorithmic}[1]
+\Require Training data $\mathcal{D}_{train}$, validation data $\mathcal{D}_{val}$
+\Require Learning rate $\eta$, batch size $B$, patience $P$
+\Ensure Trained model parameters $\theta^*$
+
+\State Initialize parameters $\theta$ randomly
+\State $best\_loss \gets \infty$
+\State $patience\_counter \gets 0$
+
+\While{$patience\_counter < P$}
+    \ForAll{mini-batch $\mathcal{B}$ in $\mathcal{D}_{train}$}
+        \State Compute predictions $\hat{y} = f(x; \theta)$
+        \State Compute loss $\mathcal{L}(\hat{y}, y)$
+        \State Update $\theta \gets \theta - \eta \nabla_\theta \mathcal{L}$
+    \EndFor
+    
+    \State $val\_loss \gets \text{Evaluate}(\mathcal{D}_{val}, \theta)$
+    
+    \If{$val\_loss < best\_loss$}
+        \State $best\_loss \gets val\_loss$
+        \State $\theta^* \gets \theta$
+        \State $patience\_counter \gets 0$
+    \Else
+        \State $patience\_counter \gets patience\_counter + 1$
+    \EndIf
+\EndWhile
+
+\State \Return $\theta^*$
+\end{algorithmic}
+\end{algorithm}
+```
+
+You can reference algorithms using @alg-training in your text.
+
+## Loss Function {#sec-loss}
+
+We use cross-entropy loss for classification:
+
+$$
+\mathcal{L}_{CE} = -\frac{1}{N} \sum_{i=1}^{N} \sum_{c=1}^{C} y_{i,c} \log(\hat{y}_{i,c})
+$$ {#eq-ce-loss}
+
+With L2 regularization:
+
+$$
+\mathcal{L}_{total} = \mathcal{L}_{CE} + \lambda \|\mathbf{W}\|_2^2
+$$ {#eq-regularized-loss}
+
+## Evaluation Metrics {#sec-metrics}
+
+Standard classification metrics:
+
+| Metric | Formula | Interpretation |
+|--------|---------|----------------|
+| Accuracy | $\frac{TP + TN}{TP + TN + FP + FN}$ | Overall correctness |
+| Precision | $\frac{TP}{TP + FP}$ | Positive prediction accuracy |
+| Recall | $\frac{TP}{TP + FN}$ | True positive detection rate |
+| F1-Score | $\frac{2 \cdot P \cdot R}{P + R}$ | Harmonic mean |
+
+: Classification metrics {#tbl-metrics}
+
+## Implementation Details {#sec-implementation}
+
+### Hyperparameters
+
+| Parameter | Value | Description |
+|-----------|------:|-------------|
+| Learning rate | 0.001 | Adam optimizer |
+| Batch size | 32 | Mini-batch size |
+| Embedding dim | 300 | Word embedding dimension |
+| Hidden units | 256 | LSTM hidden size |
+| Dropout | 0.5 | Dropout probability |
+
+: Model hyperparameters {#tbl-hyperparameters}
+
+### Code Example (Optional)
+
+You can include Python code blocks:
+
+```python
+import torch
+import torch.nn as nn
+
+class SimpleModel(nn.Module):
+    def __init__(self, vocab_size, embed_dim, hidden_dim):
+        super(SimpleModel, self).__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_dim)
+        self.lstm = nn.LSTM(embed_dim, hidden_dim, batch_first=True)
+        self.fc = nn.Linear(hidden_dim, num_classes)
+        
+    def forward(self, x):
+        embedded = self.embedding(x)
+        lstm_out, _ = self.lstm(embedded)
+        output = self.fc(lstm_out[:, -1, :])
+        return output
+```
+
+## Summary {#sec-methodology-summary}
+
+This chapter presented:
+
+1. Research framework and data preprocessing (@sec-preprocessing)
+2. Model architecture with attention mechanism (@sec-model-architecture)
+3. Loss functions and evaluation metrics (@sec-metrics)
+4. Implementation details and hyperparameters (@tbl-hyperparameters)
+
+The next chapter presents experimental results.

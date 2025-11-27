@@ -1,0 +1,38 @@
+# Appendix A: Additional Material {#sec-appendix-a .unnumbered}
+
+This appendix contains supplementary material that supports the main thesis content.
+
+## Section A.1
+
+Add supplementary information, detailed derivations, additional data, or code listings here.
+
+## Section A.2
+
+You can include:
+
+- Extended tables
+- Additional figures
+- Detailed algorithms
+- Survey instruments
+- Raw data summaries
+- Technical specifications
+
+## Example Code Listing
+
+```python
+def example_function(param1, param2):
+    """
+    An example function for demonstration.
+    """
+    result = param1 + param2
+    return result
+```
+
+## Additional Tables
+
+| Parameter | Value | Unit |
+|-----------|-------|------|
+| Param 1   | 10    | m/s  |
+| Param 2   | 20    | kg   |
+
+: Example supplementary data table {#tbl-appendix-example}

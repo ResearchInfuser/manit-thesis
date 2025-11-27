@@ -1,0 +1,93 @@
+project:
+  type: book
+  output-dir: draft
+
+book:
+  title: "Your Thesis Title"
+  output-file: "PhD_Thesis"
+  date: "Month, Year"
+  author:
+    name: "Your Name"
+    url: https://example.com
+  downloads: [pdf]
+  chapters:
+    - index.qmd
+    - Chapters/02_literature_review.qmd
+    - Chapters/03_methodology.qmd
+    - Chapters/04_results.qmd
+    - Chapters/05_discussion.qmd
+    - Chapters/06_conclusions.qmd
+    - Chapters/07_additional.qmd
+    - Chapters/08_list_of_publications.qmd
+    - Chapters/09_references.qmd
+  # appendices:
+    # - Appendices/AppendixA.qmd
+  search: true
+
+thesis:
+  degree-name: "Doctor of Philosophy"
+  scholar-number: 'Your Scholar Number'
+  department: "Your Department Name"
+  institute: "Maulana Azad National Institute of Technology"
+  phd-start-date: "Month Year"
+  phd-end-date: "Month Year"
+  keywords: "Keyword 1, Keyword 2, Keyword 3"
+  university-line1: "Maulana Azad" 
+  university-line2: "National Institute of Technology"
+  university-location: "Bhopal - 462003 (INDIA)"
+  
+  supervisor:
+    name: "Supervisor Name"
+    designation: "Designation"
+    department: "Department"
+    institute: "Maulana Azad National Institute of Technology"
+    url:
+  
+  co-supervisor:
+    name: "Co-Supervisor Name"
+    designation: "Designation"
+    department: "Department"
+    institute: "Maulana Azad National Institute of Technology"
+    url:
+    
+  declaration: "Frontmatter/declaration.tex"
+  acknowledgements: "Frontmatter/acknowledgements.tex"
+  abstract: "Frontmatter/abstract.tex"
+  abbreviations: "Frontmatter/abbreviations.tex"
+  symbols: "Frontmatter/symbols.tex"
+  dedication: "Frontmatter/dedication.tex"
+  logo: images/logo.png
+  logo-height: "1.75in"
+  
+
+bibliography: [references.bib]
+
+execute:
+  echo: false
+  code-overflow: wrap
+
+# urlcolor changes the url color in the body of the PDF
+# linkcolor changes color of internal links (like to figures)
+# toclinkcolor changes color of toc, lof and lot links
+format:
+  manit-thesis-pdf: 
+    documentclass: ManitThesis
+    papersize: a4
+    toc-depth: 3
+    toclinkcolor: blue
+    urlcolor: blue
+    pdf-engine: xelatex
+    pdf-engine-opts: ["-shell-escape"]
+    keep-tex: true
+    use-rsvg-convert: true
+    cite-method: biblatex
+    include-in-header: 
+      - _extensions/manit-thesis/partials/in-header.tex
+    biblatexoptions:
+      - backend=biber
+      - style=ieee
+      - url=false
+  
+  html: default
+  
+  docx: default

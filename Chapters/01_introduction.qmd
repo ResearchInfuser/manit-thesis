@@ -1,0 +1,126 @@
+# Introduction {#sec-ch1}
+
+This chapter demonstrates various Quarto features you can use in your thesis. Cross-references like @sec-background, @fig-sample-logo, @tbl-comparison, and @eq-regression work throughout the document.
+
+## Background and Motivation {#sec-background}
+
+Quarto supports **bold**, *italic*, and `inline code`. You can cite references like this [@sample2023research] or with multiple citations [@sample2023research; @example2022deep].
+
+### Including Figures {#sec-figures}
+
+You can include images from the `images/` or `Figures/` directory with captions and cross-references:
+
+![Sample figure caption - replace with your own figure](images/logo.png){#fig-sample-logo width=40%}
+
+Reference figures using @fig-sample-logo in your text. The figure will be automatically numbered and added to the List of Figures.
+
+**To add your own figures:**
+
+1. Place image files in the `Figures/` directory (e.g., `Figures/Chapter1/my_diagram.png`)
+2. Reference them like: `![Caption here](Figures/Chapter1/my_diagram.png){#fig-my-diagram width=60%}`
+3. Use `@fig-my-diagram` to reference in text
+
+## Mathematical Equations {#sec-equations}
+
+Inline equations use single dollar signs: $E = mc^2$ or $\alpha + \beta = \gamma$
+
+Display equations use double dollar signs:
+
+$$
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon
+$$ {#eq-regression}
+
+You can reference equations like @eq-regression in your text.
+
+More complex equations with Greek letters:
+
+$$
+\mathcal{L}_{CE} = -\sum_{i=1}^{N} \sum_{c=1}^{C} y_{ic} \log(\hat{y}_{ic})
+$$ {#eq-cross-entropy}
+
+where $\mathcal{L}_{CE}$ is the cross-entropy loss (@eq-cross-entropy), $N$ is the number of samples, $C$ is the number of classes, $y_{ic}$ is the true label, and $\hat{y}_{ic}$ is the predicted probability.
+
+Matrix notation example:
+
+$$
+\mathbf{H} = \text{ReLU}(\mathbf{W}_1 \mathbf{X} + \mathbf{b}_1)
+$$ {#eq-hidden-layer}
+
+## Tables {#sec-tables}
+
+### Simple Markdown Tables
+
+| Method | Accuracy | F1-Score | Reference |
+|--------|:--------:|:--------:|-----------|
+| Method A | 85.2% | 0.847 | [@sample2023research] |
+| Method B | 87.5% | 0.871 | [@example2022deep] |
+| Method C | 89.1% | 0.885 | [@textbook2021fundamentals] |
+
+: Comparison of different methods {#tbl-comparison}
+
+Reference tables using @tbl-comparison in your text. Tables are automatically numbered and added to the List of Tables.
+
+### Tables with Custom Column Widths
+
+| Approach | Strengths | Weaknesses | Scalability |
+|----------|-----------|------------|:-----------:|
+| Rule-based | Simple to implement | Limited flexibility | Low |
+| Machine Learning | Data-driven | Requires large datasets | Medium |
+| Deep Learning | High accuracy | Computationally expensive | High |
+
+: Advantages and disadvantages {#tbl-approaches tbl-colwidths="[20,30,30,20]"}
+
+## Lists and Structure
+
+### Bullet Lists
+
+- First item with **bold text**
+- Second item with *italic text*
+- Third item with `inline code`
+  - Nested item A
+  - Nested item B
+
+### Numbered Lists
+
+1. Data collection and preprocessing
+2. Model architecture design
+3. Training and validation
+4. Performance evaluation
+5. Result analysis
+
+### Definition Lists
+
+Accuracy
+:   The proportion of correct predictions among total predictions
+
+Precision
+:   The proportion of true positives among all positive predictions
+
+Recall
+:   The proportion of true positives among all actual positives
+
+## Research Questions {#sec-research-questions}
+
+This research aims to answer the following questions:
+
+1. **RQ1**: What is the first research question?
+2. **RQ2**: What is the second research question?
+3. **RQ3**: What is the third research question?
+
+## Contributions {#sec-contributions}
+
+The main contributions of this thesis are:
+
+- **Contribution 1**: Description of first contribution
+- **Contribution 2**: Description of second contribution
+- **Contribution 3**: Description of third contribution
+
+## Thesis Structure {#sec-thesis-structure}
+
+This thesis is organized as follows:
+
+- **@sec-ch2** presents the literature review and related work
+- **@sec-ch3** describes the research methodology
+- **@sec-ch4** presents experimental results
+- **@sec-ch5** discusses findings and implications
+- **@sec-ch6** concludes and outlines future work

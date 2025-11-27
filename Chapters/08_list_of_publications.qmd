@@ -1,0 +1,21 @@
+# List of Publications {#sec-publications .unnumbered .unlisted}
+
+This section lists the publications that resulted from this research.
+
+## Journal Articles
+
+1. Author, A., Author, B. (Year). Title of the paper. *Journal Name*, Volume(Issue), pages. DOI
+
+2. Author, A., Author, B. (Year). Title of another paper. *Journal Name*, Volume(Issue), pages. DOI
+
+## Conference Papers
+
+1. Author, A., Author, B. (Year). Title of the conference paper. In *Proceedings of Conference Name* (pp. pages). Location: Publisher.
+
+2. Author, A., Author, B. (Year). Title of another conference paper. In *Proceedings of Conference Name* (pp. pages). Location: Publisher.
+
+## Workshop Papers and Posters
+
+1. Author, A., Author, B. (Year). Title of workshop paper. In *Workshop Name at Conference*, Location.
+
+Replace this template content with your actual publications.

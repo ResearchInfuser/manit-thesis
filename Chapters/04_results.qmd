@@ -1,0 +1,147 @@
+# Results and Analysis {#sec-ch4}
+
+This chapter presents experimental results and performance analysis.
+
+## Experimental Setup {#sec-experimental-setup}
+
+### Datasets
+
+We evaluated our approach on multiple datasets:
+
+| Dataset | Domain | Samples | Classes | Source |
+|---------|--------|--------:|:-------:|--------|
+| Dataset A | Text | 10,000 | 5 | [@sample2023research] |
+| Dataset B | Reviews | 25,000 | 3 | [@example2022deep] |
+| Dataset C | Social Media | 15,000 | 8 | Public corpus |
+
+: Dataset characteristics {#tbl-datasets}
+
+### Baseline Methods
+
+Comparison with existing approaches:
+
+| Method | Type | Year | Key Feature |
+|--------|------|:----:|-------------|
+| Baseline 1 | Traditional | 2020 | TF-IDF features |
+| Baseline 2 | Deep Learning | 2021 | CNN architecture |
+| Baseline 3 | Transformer | 2022 | BERT-based |
+| Our Approach | Hybrid | 2023 | Attention + Context |
+
+: Baseline methods {#tbl-baselines}
+
+## Performance Results {#sec-performance}
+
+### Overall Performance
+
+Main results across all datasets:
+
+| Method | Accuracy | Precision | Recall | F1-Score |
+|--------|:--------:|:---------:|:------:|:--------:|
+| Baseline 1 | 75.3% | 0.74 | 0.72 | 0.73 |
+| Baseline 2 | 82.7% | 0.81 | 0.80 | 0.80 |
+| Baseline 3 | 86.5% | 0.85 | 0.84 | 0.84 |
+| **Our Approach** | **89.2%** | **0.88** | **0.87** | **0.88** |
+
+: Performance comparison on Dataset A {#tbl-main-results}
+
+Our approach achieves the best performance across all metrics, with 2.7% improvement in accuracy over the strongest baseline (see @tbl-main-results).
+
+### Statistical Significance
+
+Paired t-tests comparing our approach with baselines:
+
+| Comparison | t-statistic | p-value | Significant? |
+|------------|:-----------:|:-------:|:------------:|
+| Ours vs Baseline 1 | 8.42 | < 0.001 | Yes |
+| Ours vs Baseline 2 | 5.15 | < 0.01 | Yes |
+| Ours vs Baseline 3 | 2.87 | < 0.05 | Yes |
+
+: Statistical significance (α = 0.05) {#tbl-significance}
+
+## Ablation Study {#sec-ablation}
+
+Component contribution analysis:
+
+| Model Variant | Accuracy | Change |
+|---------------|:--------:|:------:|
+| Full Model | 89.2% | - |
+| Without Attention | 85.1% | -4.1% |
+| Without Pretraining | 84.8% | -4.4% |
+| Base Model Only | 80.3% | -8.9% |
+
+: Ablation study results {#tbl-ablation}
+
+The ablation study (@tbl-ablation) shows that both attention and pretraining are crucial components.
+
+## Per-Class Analysis {#sec-class-analysis}
+
+### F1-Scores by Class
+
+| Class | Baseline 1 | Baseline 2 | Baseline 3 | Ours | Support |
+|-------|:----------:|:----------:|:----------:|:----:|:-------:|
+| Class 1 | 0.78 | 0.84 | 0.88 | **0.91** | 2,450 |
+| Class 2 | 0.72 | 0.80 | 0.85 | **0.87** | 1,820 |
+| Class 3 | 0.70 | 0.79 | 0.84 | **0.86** | 1,650 |
+| Class 4 | 0.68 | 0.77 | 0.82 | **0.84** | 1,430 |
+| Class 5 | 0.74 | 0.82 | 0.86 | **0.88** | 1,710 |
+
+: Per-class F1-scores {#tbl-class-performance}
+
+## Computational Efficiency {#sec-efficiency}
+
+### Resource Requirements
+
+| Method | Parameters | Training Time | Inference | Memory |
+|--------|:----------:|:-------------:|:---------:|:------:|
+| Baseline 1 | 50K | 5 min | 0.1 ms | 100 MB |
+| Baseline 2 | 2.5M | 45 min | 1.5 ms | 800 MB |
+| Baseline 3 | 110M | 240 min | 6.0 ms | 2.5 GB |
+| **Our Approach** | 15M | 90 min | 2.5 ms | 1.2 GB |
+
+: Computational requirements {#tbl-efficiency}
+
+Our model (@tbl-efficiency) achieves better accuracy than Baseline 3 while being:
+
+- **2.7× faster** in inference
+- **52% smaller** in memory footprint
+
+## Error Analysis {#sec-error-analysis}
+
+Common error patterns identified:
+
+| Error Type | Frequency | Example Case |
+|------------|:---------:|--------------|
+| Ambiguous context | 35% | Context-dependent meaning |
+| Rare patterns | 28% | Infrequent class instances |
+| Noisy input | 22% | Misspellings, typos |
+| Edge cases | 15% | Boundary conditions |
+
+: Error distribution analysis {#tbl-errors}
+
+## Discussion {#sec-discussion}
+
+Key findings:
+
+1. **Performance**: Consistent improvements across all datasets (2-4% over baselines)
+2. **Efficiency**: Good balance between accuracy and computational cost
+3. **Components**: Both attention and pretraining contribute significantly
+4. **Limitations**: Performance degrades on rare classes and ambiguous contexts
+
+### Comparison with Literature
+
+Our results compare favorably with recent work:
+
+- Similar accuracy to [@sample2023research] with 40% fewer parameters
+- Faster inference than transformer-based approaches [@example2022deep]
+- Better generalization across domains
+
+## Summary {#sec-results-summary}
+
+Main findings from this chapter:
+
+1. Proposed approach outperforms all baselines (@tbl-main-results)
+2. Improvements are statistically significant (@tbl-significance)
+3. All components contribute to final performance (@tbl-ablation)
+4. Efficient in terms of computational resources (@tbl-efficiency)
+
+The next chapter discusses implications and future work.
