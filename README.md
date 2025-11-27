@@ -6,7 +6,7 @@ A Quarto extension template for formatting PhD theses according to MANIT (Maulan
 
 📄 **[View Sample PDF](draft/PhD_Thesis.pdf)** - See what your thesis will look like with this template
 
-![Thesis Template](thesis_template.jpg)
+![Thesis Template](manit-thesis.jpg)
 
 ## Features
 
