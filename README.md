@@ -295,11 +295,14 @@ If you use this template, please cite it as:
 ```bibtex
 @software{manit_thesis_template,
   title={MANIT PhD Thesis Quarto Template},
-  author={[Template Author]},
+  author={Prashant Kumar Nag},
+  organization={ResearchInfuser},
   year={2024},
   url={https://github.com/ResearchInfuser/manit-thesis}
 }
 ```
+
+Or in text: "MANIT PhD Thesis Quarto Template by Prashant Kumar Nag (ResearchInfuser, 2024)"
 
 ## Support
 
