@@ -49,7 +49,7 @@ Download the repository as a ZIP file and extract it to your desired location.
 manit-thesis/
  _quarto.yml              # Main configuration file
  index.qmd                # Entry point (includes Chapter 1)
- MyLibrary.bib           # Your bibliography file
+ references.bib          # Your bibliography file
  publications.bib        # Your publication list
  Chapters/               # Chapter files
     01_Chapter1.qmd     # Introduction
@@ -121,7 +121,7 @@ Edit the chapter files in `Chapters/`:
 
 ### 4. Add References
 
-Add your references to `MyLibrary.bib` in BibTeX format:
+Add your references to `references.bib` in BibTeX format:
 
 ```bibtex
 @article{author2023title,
@@ -256,7 +256,7 @@ $$ {#eq-derivative}
    - Run `quarto check` to verify installation
 
 2. **Bibliography not showing**
-   - Verify `MyLibrary.bib` syntax
+   - Verify `references.bib` syntax
    - Ensure citations are used in the text
    - Check BibLaTeX backend is installed
 
